@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Republic of South Sudan — Official Government Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #0D0D0D;
+      --soil:     #3B2A1A;
+      --nile:     #1A3A5C;
+      --gold:     #C8922A;
+      --light:    #F7F3EE;
+      --white:    #FFFFFF;
+      --red:      #8B1A1A;
+      --green:    #1A5C2A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      background: var(--nile);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 6px 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: 0.04em;
+    }
+    .topbar a { color: #aac8e8; text-decoration: none; margin-left: 1.2rem; }
+    .topbar a:hover { color: #fff; }
+
+    header {
+      background: var(--white);
+      border-bottom: 4px solid var(--gold);
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .coat-of-arms {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+    }
+    .coat-of-arms img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--soil);
+    }
+
+    .header-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--nile);
+      line-height: 1.1;
+    }
+    .header-text p {
+      font-size: 0.72rem;
+      color: #666;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 0.2rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--nile);
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+      letter-spacing: 0.02em;
+    }
+    nav a:hover { background: var(--nile); color: #fff; }
+
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--nile) 0%, var(--soil) 60%, #1a1a1a 100%);
+      color: #fff;
+      padding: 5rem 2rem 4rem;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 6px;
+      background: linear-gradient(to right,
+        #000 0%, #000 16.6%,
+        #fff 16.6%, #fff 33.2%,
+        #D21034 33.2%, #D21034 49.8%,
+        #078930 49.8%, #078930 66.4%,
+        #fff 66.4%, #fff 83%,
+        #000 83%, #000 100%
+      );
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h2 span { color: var(--gold); }
+
+    .hero p {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #d0cbc5;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.88rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: #fff; }
+
+    .hero-deco {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 80px solid rgba(200,146,42,0.12);
+      pointer-events: none;
+    }
+
+    .services-strip {
+      background: var(--nile);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+    }
+
+    .service-item {
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .service-item:last-child { border-right: none; }
+    .service-item:hover { background: rgba(255,255,255,0.08); }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .service-item span:last-child {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: block;
+      color: #aac8e8;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--nile);
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .news-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+    .news-thumb {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .news-body { padding: 1.2rem; }
+    .news-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .news-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--nile);
+      margin-bottom: 0.5rem;
+    }
+    .news-body p { font-size: 0.82rem; color: #666; line-height: 1.6; }
+    .news-date { font-size: 0.72rem; color: #999; margin-top: 0.7rem; }
+
+    .ministries-bg { background: var(--soil); padding: 4rem 2rem; }
+    .ministries-inner { max-width: 1200px; margin: 0 auto; }
+    .ministries-inner .section-title { color: #fff; }
+
+    .ministry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .ministry-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .ministry-card:hover { background: rgba(255,255,255,0.14); }
+    .ministry-card .m-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+    .ministry-card h4 { font-size: 0.88rem; font-weight: 600; line-height: 1.3; color: #e8d8b8; }
+    .ministry-card p { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+
+    .stats-section {
+      background: var(--gold);
+      padding: 3rem 2rem;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--soil);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--soil);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.4rem;
+    }
+
+    .announce-list { display: flex; flex-direction: column; gap: 1px; }
+    .announce-item {
+      background: #fff;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      border-left: 4px solid var(--gold);
+      transition: border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .announce-item:hover { border-color: var(--nile); }
+    .announce-date {
+      min-width: 56px;
+      text-align: center;
+    }
+    .announce-date .day {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--nile);
+      line-height: 1;
+    }
+    .announce-date .mon {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .announce-content h4 { font-size: 0.92rem; font-weight: 600; color: var(--nile); margin-bottom: 0.2rem; }
+    .announce-content p { font-size: 0.78rem; color: #777; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .president-card {
+      background: var(--nile);
+      color: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .pres-avatar {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1rem;
+    }
+    .pres-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.2);
+    }
+    .president-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .president-card .title { font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .president-card blockquote {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #c8d8e8;
+      border-left: 3px solid var(--gold);
+      padding-left: 1rem;
+      text-align: left;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand p { font-size: 0.78rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #fff; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+    }
+
+    .search-bar {
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 0 2rem;
+    }
+    .search-bar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--nile);
+      margin-bottom: 1rem;
+    }
+    .search-input-wrap {
+      display: flex;
+      max-width: 520px;
+      margin: 0 auto;
+      border: 2px solid var(--nile);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .search-input-wrap input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      border: none;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .search-input-wrap button {
+      background: var(--nile);
+      color: #fff;
+      border: none;
+      padding: 0 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.04em;
+    }
+    .search-input-wrap button:hover { background: var(--soil); }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>🇸🇸 Republic of South Sudan — Official Government Portal</span>
+  <div>
+    <a href="#">العربية</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Contact</a>
+    <a href="#">Sitemap</a>
+  </div>
+</div>
+
+<header>
+  <div class="coat-of-arms"><img src="images/coat-of-arms.jpg" alt="Coat of Arms of South Sudan"></div>
+  <div class="header-text">
+    <h1>Republic of South Sudan</h1>
+    <p>Office of the President &amp; Council of Ministers</p>
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Government</a>
+    <a href="#">Ministries</a>
+    <a href="#">Services</a>
+    <a href="#">News</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Justice · Liberty · Prosperity</p>
+    <h2>Building a <span>United</span><br/>South Sudan</h2>
+    <p>The official portal of the Transitional Government of National Unity. Access public services, government news, and official documents of the Republic of South Sudan.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Access e-Services</a>
+      <a href="#" class="btn-outline">Read the Constitution</a>
+    </div>
+  </div>
+  <div class="hero-deco"></div>
+</section>
+
+<div class="services-strip">
+  <a href="#" class="service-item"><span class="service-icon">📋</span><span>Birth Registration</span></a>
+  <a href="#" class="service-item"><span class="service-icon">🛂</span><span>Passport & Travel</span></a>
+  <a href="#" class="service-item"><span class="service-icon">🏛️</span><span>Business Licences</span></a>
+  <a href="#" class="service-item"><span class="service-icon">🎓</span><span>Education</span></a>
+  <a href="#" class="service-item"><span class="service-icon">🏥</span><span>Health Services</span></a>
+  <a href="#" class="service-item"><span class="service-icon">⚖️</span><span>Legal Aid</span></a>
+</div>
+
+<div style="background:#fff; padding: 2.5rem 2rem;">
+  <div class="search-bar" style="background: #EEF2F7; margin:0; border-radius:8px;">
+    <h3>How can we help you today?</h3>
+    <div class="search-input-wrap">
+      <input type="text" placeholder="Search government services, documents, ministries…"/>
+      <button>Search</button>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-label">Latest Updates</p>
+  <h2 class="section-title">News & Announcements</h2>
+  <div class="news-grid">
+    <a href="#" class="news-card">
+      <div class="news-thumb" style="background: #1A3A5C20;">🕊️</div>
+      <div class="news-body">
+        <p class="news-tag">Peace & Security</p>
+        <h3>Government Reaffirms Commitment to Revitalised Peace Agreement</h3>
+        <p>The Transitional Government emphasises implementation of outstanding provisions ahead of the upcoming review conference.</p>
+        <p class="news-date">June 18, 2026</p>
+      </div>
+    </a>
+    <a href="#" class="news-card">
+      <div class="news-thumb" style="background: #C8922A20;">🛢️</div>
+      <div class="news-body">
+        <p class="news-tag">Economy</p>
+        <h3>Ministry of Petroleum Announces New Revenue Sharing Framework</h3>
+        <p>Updated oil revenue distribution guidelines aim to strengthen state-level budgets and infrastructure development.</p>
+        <p class="news-date">June 15, 2026</p>
+      </div>
+    </a>
+    <a href="#" class="news-card">
+      <div class="news-thumb" style="background: #1A5C2A20;">🌾</div>
+      <div class="news-body">
+        <p class="news-tag">Agriculture</p>
+        <h3>South Sudan Launches National Food Security Strategy 2026–2030</h3>
+        <p>A five-year plan targeting food self-sufficiency through smallholder farmer support and irrigation investment.</p>
+        <p class="news-date">June 10, 2026</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="stats-section">
+  <div class="stats-inner">
+    <div><div class="stat-num">10</div><div class="stat-label">States</div></div>
+    <div><div class="stat-num">12M+</div><div class="stat-label">Population</div></div>
+    <div><div class="stat-num">32</div><div class="stat-label">Ministries</div></div>
+    <div><div class="stat-num">2011</div><div class="stat-label">Year of Independence</div></div>
+    <div><div class="stat-num">644K</div><div class="stat-label">km² Area</div></div>
+  </div>
+</div>
+
+<div style="background:#fff; padding: 4rem 2rem;">
+  <div class="two-col" style="max-width:1200px; margin:0 auto;">
+    <div>
+      <p class="section-label">Leadership</p>
+      <h2 class="section-title">Office of the President</h2>
+      <div class="president-card">
+        <div class="pres-avatar"><img src="images/coat-of-arms.jpg" alt="Coat of Arms"></div>
+        <h3>H.E. Salva Kiir Mayardit</h3>
+        <p class="title">President of the Republic of South Sudan</p>
+        <blockquote>
+          "We must work together as one people, one nation, building peace and prosperity for every South Sudanese, regardless of background or origin."
+        </blockquote>
+      </div>
+    </div>
+    <div>
+      <p class="section-label">Official Notices</p>
+      <h2 class="section-title">Government Announcements</h2>
+      <div class="announce-list">
+        <a href="#" class="announce-item"><div class="announce-date"><div class="day">19</div><div class="mon">Jun</div></div><div class="announce-content"><h4>National Census Registration Opens Nationwide</h4><p>Ministry of Interior — All counties</p></div></a>
+        <a href="#" class="announce-item"><div class="announce-date"><div class="day">17</div><div class="mon">Jun</div></div><div class="announce-content"><h4>New Education Curriculum Approved for 2026/27 Academic Year</h4><p>Ministry of General Education</p></div></a>
+        <a href="#" class="announce-item"><div class="announce-date"><div class="day">14</div><div class="mon">Jun</div></div><div class="announce-content"><h4>Public Tender: Construction of Juba Ring Road Phase II</h4><p>Ministry of Roads & Bridges</p></div></a>
+        <a href="#" class="announce-item"><div class="announce-date"><div class="day">11</div><div class="mon">Jun</div></div><div class="announce-content"><h4>Health Workers Vaccination Campaign Extended to Greater Equatoria</h4><p>Ministry of Health</p></div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ministries-bg">
+  <div class="ministries-inner">
+    <p class="section-label" style="color: var(--gold);">Explore</p>
+    <h2 class="section-title">Government Ministries</h2>
+    <div class="ministry-grid">
+      <a href="#" class="ministry-card"><span class="m-icon">🛡️</span><h4>Ministry of Defence</h4><p>National security & armed forces</p></a>
+      <a href="#" class="ministry-card"><span class="m-icon">⚖️</span><h4>Ministry of Justice</h4><p>Rule of law & legal affairs</p></a>
+      <a href="#" class="ministry-card"><span class="m-icon">💰</span><h4>Ministry of Finance</h4><p>Budget, taxation & economy</p></a>
+      <a href="#" class="ministry-card"><span class="m-icon">🌐</span><h4>Ministry of Foreign Affairs</h4><p>Diplomacy & international relations</p></a>
+      <a href="#" class="ministry-card"><span class="m-icon">🏥</span><h4>Ministry of Health</h4><p>Public health & medical services</p></a>
+      <a href="#" class="ministry-card"><span class="m-icon">🎓</span><h4>Ministry of Education</h4><p>Schools, universities & curriculum</p></a>
+      <a href="#" class="ministry-card"><span class="m-icon">🛢️</span><h4>Ministry of Petroleum</h4><p>Oil, gas & energy resources</p></a>
+      <a href="#" class="ministry-card"><span class="m-icon">🌾</span><h4>Ministry of Agriculture</h4><p>Food security & rural development</p></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Republic of South Sudan</h3>
+      <p>The official website of the Transitional Government of National Unity of the Republic of South Sudan. Providing transparent, accessible public services to all citizens.</p>
+      <div style="margin-top:1rem; display:flex; gap:6px;">
+        <span style="background:#000; width:24px; height:14px; border-radius:2px; display:inline-block;"></span>
+        <span style="background:#D21034; width:24px; height:14px; border-radius:2px; display:inline-block;"></span>
+        <span style="background:#078930; width:24px; height:14px; border-radius:2px; display:inline-block;"></span>
+        <span style="background:#fff; width:24px; height:14px; border-radius:2px; display:inline-block; border:1px solid #444;"></span>
+        <span style="background:#0F47AF; width:24px; height:14px; border-radius:2px; display:inline-block;"></span>
+        <span style="background:#FCDD09; width:24px; height:14px; border-radius:2px; display:inline-block;"></span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Government</h4>
+      <a href="#">Executive Branch</a>
+      <a href="#">Legislature (TNLA)</a>
+      <a href="#">Judiciary</a>
+      <a href="#">State Governments</a>
+      <a href="#">Constitution</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">e-Services Portal</a>
+      <a href="#">Document Verification</a>
+      <a href="#">Tax Filing</a>
+      <a href="#">Tender Notices</a>
+      <a href="#">Gazette</a>
+    </div>
+    <div class="footer-col">
+      <h4>Information</h4>
+      <a href="#">About South Sudan</a>
+      <a href="#">National Symbols</a>
+      <a href="#">Press Releases</a>
+      <a href="#">Data & Statistics</a>
+      <a href="#">Contact Government</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Republic of South Sudan. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Use · Accessibility</span>
+  </div>
+</footer>
+
+</body>
+  </html
